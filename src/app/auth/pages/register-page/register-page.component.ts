@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   ]
 })
 export class RegisterPageComponent {
+  hide = true;
 
+  togglePasswordVisibility() {
+    this.hide = !this.hide;
+  }
 }

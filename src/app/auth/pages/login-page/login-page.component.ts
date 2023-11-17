@@ -8,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class LoginPageComponent {
 
+  hide = true;
+  //Muestra el boton del ojo en contraseña
+  togglePasswordVisibility() {
+    this.hide = !this.hide;
+  }
+
 }
