@@ -4,6 +4,7 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { NewPageComponent } from './pages/new-page/new-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { HeroPageComponent } from './pages/hero-page/hero-page.component';
+import { ListPageComponent } from './pages/list-page/list-page.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'edit/:id',
         component: NewPageComponent
+      },
+      {
+        path: 'list',
+        component: ListPageComponent
       },
       {
         path: ':id',
