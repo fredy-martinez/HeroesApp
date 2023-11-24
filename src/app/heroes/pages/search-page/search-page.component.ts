@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Hero } from '../../interfaces/heroe.interface';
+import { HeroesService } from '../../services/heroes.service';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-search-page',
@@ -10,5 +13,31 @@ import { FormControl } from '@angular/forms';
 export class SearchPageComponent {
 
   
-  public searchInput = new FormControl('')
+  public searchInput = new FormControl('');
+  public heroess: Hero[] = [];
+  public selectedHero?: Hero;
+
+  constructor( private heroesService: HeroesService ){}
+
+  searchHero(){
+    const value: string = this.searchInput.value || '';
+
+    this.heroesService.getSuggestion( value)
+      .subscribe( heroes => this.heroess = heroes);
+    
+  }
+
+  OnSelectedOption ( event: MatAutocompleteSelectedEvent): void {
+    if( !event.option.value){
+
+      this.selectedHero = undefined
+    } 
+
+    const hero: Hero = event.option.value;
+    this.searchInput.setValue(hero.superhero);
+
+    this.selectedHero = hero;
+  }
+
+
 }
