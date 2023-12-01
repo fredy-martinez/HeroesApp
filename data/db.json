@@ -10,18 +10,20 @@
     {
       "id": "dc-batman",
       "superhero": "Batman",
-      "publisher": "DC Comics",
+      "publisher": "Dc Comics",
       "alter_ego": "Bruce Wayne",
       "first_appearance": "Detective Comics #27",
-      "characters": "Bruce Wayne"
+      "characters": "Bruce Wayne",
+      "alt_img": null
     },
     {
       "id": "dc-superman",
       "superhero": "Superman",
-      "publisher": "DC Comics",
+      "publisher": "Dc Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "characters": "Kal-El",
+      "alt_img": "https://content.eccediciones.com/productos/10036/Superman_109_30_1a_cubierta_CORR.jpg"
     },
     {
       "id": "dc-flash",
@@ -166,6 +168,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "id": "rLFSsQX",
+      "superhero": "Wolverine",
+      "publisher": "Marvel Comics",
+      "alter_ego": "Logan",
+      "first_appearance": "X-me #1 1980",
+      "characters": "Wolverine ",
+      "alt_img": "https://i.pinimg.com/736x/4f/37/50/4f3750adc878781d4b76c50006ef5ca5.jpg"
     }
   ]
 }
