@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Hero, Publisher } from '../../interfaces/heroe.interface';
 import { HeroesService } from '../../services/heroes.service';
-import { switchMap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
@@ -92,7 +92,6 @@ export class NewPageComponent implements OnInit{
     //Crear un heroe
     this.heroesService.addHero( this.currentHerro) 
       .subscribe (hero => {
-        //TODO: mostrar snackbar y navegar a /heroes/edit/hero.id
         this.router.navigate(['/heroes/edit', hero.id])
         this.showSnackBar(`${hero.superhero} Created!`)
       });
@@ -105,11 +104,16 @@ export class NewPageComponent implements OnInit{
       data: this.heroForm.value,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
-      
-    });
+    dialogRef.afterClosed()
+    .pipe(
+      filter( (result: boolean) => result),
+      switchMap( () => this.heroesService.deleteHeroById(this.currentHerro.id)),
+      filter( (wasDeleted: boolean) => wasDeleted),
+    )
+    
+    .subscribe( result => {
+      this.router.navigate(['/heroes']);
+    })
   }
 
   //Mensaje de hecho
